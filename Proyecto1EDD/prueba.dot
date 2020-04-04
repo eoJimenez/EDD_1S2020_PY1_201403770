@@ -1,0 +1,18 @@
+digraph Lista_Circular{
+rankdir = LR;
+hola[shape = record, label ="{hola}",style = filled];
+hola->mundo;
+mundo->hola;
+mundo[shape = record, label ="{mundo}",style = filled];
+mundo->prueba;
+prueba->mundo;
+prueba[shape = record, label ="{prueba}",style = filled];
+prueba->diccionario;
+diccionario->prueba;
+diccionario[shape = record, label ="{diccionario}",style = filled];
+diccionario->hola;
+hola->diccionario;	label="Lista Doblemente Enlazada: Diccionario
+
+";
+
+}

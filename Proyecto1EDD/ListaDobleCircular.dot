@@ -1,0 +1,31 @@
+digraph ListaCircularDoble
+{
+	rankdir=LR;
+	graph [nodesep=0.3];
+	subgraph cluster_0{
+	style=filled;
+	color=lightgrey;
+	labelloc=t;
+	node [shape = record, style="rounded,filled"fillcolor="orange:red",width=0.7,height=0.5];
+
+hola[label ="{hola}"];
+
+hola->mundo;
+mundo->hola;
+mundo[label ="{mundo}"];
+
+mundo->prueba;
+prueba->mundo;
+prueba[label ="{prueba}"];
+
+prueba->diccionario;
+diccionario->prueba;
+diccionario[label ="{diccionario}"];
+
+diccionario->hola;
+hola->diccionario;
+	label="Lista Circular Doble: Diccionario
+
+";
+	}
+}

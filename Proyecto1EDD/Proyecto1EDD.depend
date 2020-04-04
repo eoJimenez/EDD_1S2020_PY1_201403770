@@ -1,0 +1,325 @@
+# depslib dependency file v1.0
+1585979660 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"ListaDoble.h"
+	"ListaCircularDoble.h"
+	"Cola.h"
+	"ListaOrdenada.h"
+	"ArbolBB.h"
+	"MatrizD.h"
+	"menu.h"
+	"Json.h"
+
+1583701265 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listadcircular.cpp
+	"ListaDCircular.h"
+
+1583880572 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listadcircular.h
+	<iostream>
+	<string>
+
+1585956370 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listadoble.cpp
+	"ListaDoble.h"
+	<iostream>
+	<string>
+	<fstream>
+	<sstream>
+	<bits/stdc++.h>
+
+1585953161 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listadoble.h
+	<string>
+
+1585973619 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listacirculardoble.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<stdlib.h>
+	<conio.h>
+	<fstream>
+	"ListaCircularDoble.h"
+
+1585973619 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listacirculardoble.h
+	<ostream>
+	<fstream>
+	<iostream>
+
+1585869952 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\cola.h
+	<string>
+
+1585957329 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\cola.cpp
+	"Cola.h"
+	"ListaDoble.h"
+	"iostream"
+	<fstream>
+	<sstream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	"conio.h"
+	<time.h>
+
+1584549373 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listaordenada.h
+	<string>
+
+1584549312 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listaordenada.cpp
+	<iostream>
+	"ListaOrdenada.h"
+	<string>
+	<fstream>
+	<sstream>
+
+1585854239 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\arbolbb.cpp
+	"ArbolBB.h"
+	"ListaSimple.h"
+	<iostream>
+	<sstream>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<string>
+	<fstream>
+
+1585429068 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\arbolbb.h
+	<iostream>
+	<string>
+	<string.h>
+	<sstream>
+	<stdlib.h>
+	<conio.h>
+	<ostream>
+	<fstream>
+	"ListaOrdenada.h"
+
+1584914283 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\matrizdispersa.cpp
+	"MatrizDispersa.h"
+	<iostream>
+	<string>
+
+1584914597 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\matrizdispersa.h
+	<string>
+
+1584658605 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listasimple.h
+	<string>
+
+1584735835 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listasimple.cpp
+	"ListaSimple.h"
+	<string>
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<sstream>
+
+1585935876 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\json.cpp
+	"Json.h"
+	"ListaCircularDoble.h"
+	<iostream>
+	<fstream>
+	"json.hpp"
+	<typeinfo>
+
+1585802993 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\json.h
+
+1585852716 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\matrizd.cpp
+	"MatrizD.h"
+	<string>
+	<iostream>
+	<fstream>
+	<bits/stdc++.h>
+
+1585848283 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\matrizd.h
+	<string>
+	<iostream>
+
+1585893984 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\menu.h
+	<string>
+
+1585974713 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\menu.cpp
+	"menu.h"
+	<iostream>
+	<fstream>
+	"ListaDoble.h"
+	"ListaCircularDoble.h"
+	"Cola.h"
+	"ListaOrdenada.h"
+	"ArbolBB.h"
+	"MatrizD.h"
+	"Json.h"
+	<sstream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	"conio.h"
+	<time.h>
+	<fstream>
+	"json.hpp"
+	<typeinfo>
+
+1583104322 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\json.hpp
+	<algorithm>
+	<cassert>
+	<ciso646>
+	<cstddef>
+	<functional>
+	<initializer_list>
+	<iosfwd>
+	<iterator>
+	<memory>
+	<numeric>
+	<string>
+	<utility>
+	<vector>
+	<utility>
+	<algorithm>
+	<array>
+	<ciso646>
+	<forward_list>
+	<iterator>
+	<map>
+	<string>
+	<tuple>
+	<type_traits>
+	<unordered_map>
+	<utility>
+	<valarray>
+	<exception>
+	<stdexcept>
+	<string>
+	<cstddef>
+	<utility>
+	<stdint.h>
+	<stdint.h>
+	<cstdlib>
+	<ciso646>
+	<cstddef>
+	<type_traits>
+	<ciso646>
+	<limits>
+	<type_traits>
+	<utility>
+	<iterator>
+	<type_traits>
+	<cstdint>
+	<map>
+	<memory>
+	<string>
+	<vector>
+	<array>
+	<ciso646>
+	<cstddef>
+	<cstdint>
+	<string>
+	<algorithm>
+	<ciso646>
+	<iterator>
+	<string>
+	<tuple>
+	<type_traits>
+	<utility>
+	<valarray>
+	<vector>
+	<cstddef>
+	<iterator>
+	<string>
+	<tuple>
+	<algorithm>
+	<array>
+	<cassert>
+	<cmath>
+	<cstddef>
+	<cstdint>
+	<cstdio>
+	<cstring>
+	<iterator>
+	<limits>
+	<string>
+	<utility>
+	<array>
+	<cassert>
+	<cstddef>
+	<cstdio>
+	<cstring>
+	<istream>
+	<iterator>
+	<memory>
+	<numeric>
+	<string>
+	<type_traits>
+	<utility>
+	<cassert>
+	<cstddef>
+	<string>
+	<utility>
+	<vector>
+	<cstdint>
+	<utility>
+	<string>
+	<array>
+	<clocale>
+	<cstddef>
+	<cstdio>
+	<cstdlib>
+	<initializer_list>
+	<string>
+	<utility>
+	<vector>
+	<cassert>
+	<cmath>
+	<cstdint>
+	<functional>
+	<string>
+	<utility>
+	<vector>
+	<cstddef>
+	<limits>
+	<ciso646>
+	<iterator>
+	<type_traits>
+	<cstddef>
+	<iterator>
+	<utility>
+	<algorithm>
+	<cassert>
+	<cctype>
+	<numeric>
+	<string>
+	<utility>
+	<vector>
+	<initializer_list>
+	<utility>
+	<algorithm>
+	<array>
+	<cstdint>
+	<cstring>
+	<limits>
+	<string>
+	<algorithm>
+	<cstddef>
+	<ios>
+	<iterator>
+	<memory>
+	<ostream>
+	<string>
+	<vector>
+	<algorithm>
+	<array>
+	<cassert>
+	<ciso646>
+	<clocale>
+	<cmath>
+	<cstddef>
+	<cstdint>
+	<cstdio>
+	<limits>
+	<string>
+	<type_traits>
+	<utility>
+	<array>
+	<cassert>
+	<ciso646>
+	<cmath>
+	<cstdint>
+	<cstring>
+	<limits>
+	<type_traits>
+
