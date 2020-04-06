@@ -9,16 +9,40 @@
 #include "MatrizD.h"
 #include "menu.h"
 #include "Json.h"
+#include "SimpleDobles.h"
+#include "SimpleTriples.h"
+#include "ListaValidacion.h"
 
 using namespace std;
+//int puntosJ1  = 0;
+//string palabra = "";
 //ArbolBB *root = NULL;
 int main()
 {
-    //menu MenuP;
+    menu MenuP;
     //MenuP.menu();
     /*
+    ListaValidacion lista;
+    lista.agregarNodo(1,2,'c');
+    lista.agregarNodo(1,3,'c');
+    lista.agregarNodo(1,4,'c');
+    lista.agregarNodo(1,5,'c');
+    lista.agregarNodo(1,6,'c');
+    if(lista.buscarColumna() != NULL)
+    {
+        cout << "columna correcta";
+    }
+    else if(lista.buscarFila() != NULL)
+    {
+        cout << "fila correcta";
+    }
+    else
+    {
+        cout << "truena";
+    }
+    /*
     Json js;
-    js.leerJSon();*/
+    js.leerJSon();
     ListaDoble LD, doble;
     LD.agregarNodo('a');
     LD.agregarNodo('b');
@@ -33,15 +57,15 @@ int main()
     LD.agregarNodo('e');
     LD.agregarNodo('f');
     LD.imprimirLista();
-    LD.graficarLista("nombre");
+    //LD.graficarLista("nombre");
     //LD.eliminarNodo('a');
     //LD.graficarLista("eliminada");
     //LD.eliminarNodo('b');
     //LD.graficarLista("eliminada1");
 
     cout << LD.eliminarTodo() << endl;
-    LD.graficarLista("n");
-/*
+    LD.graficarLista("n");/*
+
     cout <<"\n";
     ListaCircularDoble lc;
     lc.agregar("hola");
@@ -51,7 +75,7 @@ int main()
     lc.agregar("nuevo");
     lc.imprimirC();
     lc.Graficar();
-    string palabra = "";
+    palabra = "nuevo";/*
     char cadena[] = "CARRO";
     for(int i = 0; i<strlen(cadena); i++)
     {
@@ -61,19 +85,56 @@ int main()
     cout<<cadena;
     //palabra = ld.getString(cadena);
 
-    if(lc.buscarPalabra(cadena) != NULL)
+    if(lc.buscarPalabra(palabra) != NULL)
     {
         cout << " la palabra existe" <<endl;
+        for(int i = 0; i<palabra.size(); i++)
+        {
+            //cout<<palabra[i] << endl;
+            puntosJ1 = puntosJ1 + MenuP.sumaPuntos(palabra[i]);
+            //cout << ld.getIntToString(puntosJ1);
+        }
+        cout << ld.getIntToString(puntosJ1);
     }
     else
     {
         cout << " la palabra no existe" <<endl;
     }
-    //if(lc.buscarPalabra(cadena).c_str() == NULL)
 
+    palabra = "diccionario";
+    if(lc.buscarPalabra(palabra) != NULL)
+    {
+        cout << " la palabra existe" <<endl;
+        for(int i = 0; i<palabra.size(); i++)
+        {
+            //cout<<palabra[i] << endl;
+            puntosJ1 = puntosJ1 + MenuP.sumaPuntos(palabra[i]);
+            //cout << ld.getIntToString(puntosJ1);
+        }
+        cout << ld.getIntToString(puntosJ1);
+    }
+    else
+    {
+        cout << " la palabra no existe" <<endl;
+    }
 
+    palabra = "tomate";
+    if(lc.buscarPalabra(palabra) != NULL)
+    {
+        cout << " la palabra existe" <<endl;
+        for(int i = 0; i<palabra.size(); i++)
+        {
+            //cout<<palabra[i] << endl;
+            puntosJ1 = puntosJ1 + MenuP.sumaPuntos(palabra[i]);
+            //cout << ld.getIntToString(puntosJ1);
+        }
+        cout << ld.getIntToString(puntosJ1);
+    }
+    else
+    {
+        cout << " la palabra no existe" <<endl;
+    }
 
-/*
     cout <<"\n";
     Cola cola;
     cola.agregarCola('h',2);
@@ -88,6 +149,12 @@ int main()
     cola.agregarCola('i',1);
     cola.agregarCola('j',2);
     cola.agregarCola('k',1);
+    cola.imprimirCola();
+    cout<< "\n" <<endl;
+    cola.eliminarCola();
+    cola.eliminarCola();
+    cola.eliminarCola();
+    cola.imprimirCola();
     cola.agregarCola('l',1);
     cola.agregarCola('m',1);
     cola.agregarCola('n',1);
@@ -96,6 +163,8 @@ int main()
     cola.agregarCola('t',1);
     cola.agregarCola('t',1);
     cola.agregarCola('a',1);
+    cola.graficarCola();
+    /*
 
     cout <<"\n";
     //cola.colaAleatoria();
@@ -108,19 +177,19 @@ int main()
     while(i <= 7)
     {
         f = cola.eliminarCola();
-        LD.agregarNodo(f);
+        //LD.agregarNodo(f);
 
         datos = cola.getString(f);
         cout <<datos;
         i++;
 
     }
-    LD.graficarLista("LD");
+    //LD.graficarLista("LD");
 
     while(j <= 7)
     {
         g = cola.eliminarCola();
-        doble.agregarNodo(g);
+        //doble.agregarNodo(g);
 
         datos = cola.getString(g);
         cout <<datos;
@@ -128,7 +197,7 @@ int main()
 
     }
     //LD.graficarLista();
-    doble.graficarLista("doble");
+    //doble.graficarLista("doble");
     cola.graficarCola();
     cout <<"\n";
     cola.imprimirCola();
@@ -184,20 +253,22 @@ int main()
 
         }
     }
-    matriz.Graficar();
+    //matriz.Graficar();
     MatrizD matriz;
     matriz.InsertarElemento(10,4,'h');
     //matriz.Graficar();
     matriz.InsertarElemento(8,5,'O');
     matriz.InsertarElemento(10,6,'L');
-    matriz.InsertarElemento(11,6,'3');
-    matriz.InsertarElemento(10,5,'2');
-    matriz.Graficar();
-    matriz.InsertarElemento(11,6,'S');
+    matriz.InsertarElemento(10,5,'O');
+    matriz.InsertarElemento(10,7,'a');
+    //matriz.Graficar();
+    matriz.InsertarElemento(11,6,'A');
     matriz.InsertarElemento(8,4,'C');
-    matriz.InsertarElemento(8,6,'P');
-    matriz.InsertarElemento(10,5,'A');
+    matriz.InsertarElemento(8,6,'O');
+    matriz.InsertarElemento(10,8,'A');
     matriz.Graficar();
+    cout << " la palabra es: " << matriz.recorrerColumna(10) << endl;
+    cout << "la palabra es: " << matriz.recorrerFila(6);
 /*
     matriz.modificar(10,5,'H');
     matriz.modificar(8,6,'H');
@@ -211,7 +282,21 @@ int main()
     matriz.InsertarElemento(1,1,'A');
     matriz.modificar(1,1,'a');
     matriz.imprimir();
-    matriz.Graficar();*/
-
+    matriz.Graficar();
+/*
+    SimpleDobles lista;
+    lista.agregar(1,2);
+    lista.agregar(2,1);
+    lista.agregar(3,2);
+    lista.agregar(4,8);
+    lista.imprimir();
+    cout <<"\n";
+    SimpleTriples triple;
+    triple.agregarTriple(2,5);
+    triple.agregarTriple(10,8);
+    triple.agregarTriple(3,4);
+    triple.agregarTriple(7,23);
+    triple.imprimir();
+*/
     return 0;
 }

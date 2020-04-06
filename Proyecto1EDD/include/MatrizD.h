@@ -43,6 +43,9 @@ class MatrizD
         string enlaceColumna();
         string enlaceNodosEnMedio();
 
+        string recorrerColumna(int);
+        string recorrerFila(int);
+
         string IntToString(int);
         string getString(char);
 

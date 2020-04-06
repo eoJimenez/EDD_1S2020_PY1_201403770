@@ -17,26 +17,37 @@
 #include <fstream>
 #include "json.hpp"
 #include <typeinfo>
+#include "SimpleDobles.h"
+#include "SimpleTriples.h"
+#include "ListaValidacion.h"
+
 using json = nlohmann::json;
 
 using namespace std;
 
-int contador = 1, contJ1, contJ2;
+int contador = 1, contJ1, contJ2, puntajej1, puntajej2;
 string  jugador1, jugador2, primero, segundo, palabraJ1, palabraJ2;
 char ficha;
 char f,g;
 int i = 1;
 int j = 1;
+int x, y;
+char c;
 
 ListaDoble LD;
 ListaDoble j1;
 ListaDoble j2;
 ListaCircularDoble LCD;
 Cola CL;
-ListaOrdenada LO;
+ListaOrdenada ListaJ1;
+ListaOrdenada ListaJ2;
 ArbolBB ABB;
 MatrizD Matriz;
 Json archivo;
+SimpleDobles Ldoble;
+SimpleTriples Ltriple;
+ListaValidacion jugar1;
+ListaValidacion jugar2;
 
 menu::menu()
 {
@@ -63,6 +74,7 @@ void menu::MenuPrincipal()
         {
         case 1:
             {
+                CL.colaAleatoria();
                 string Lcircular ="";
                 int posX, posY;
                 std::ifstream archivo("Ejemplo.json");///JsNuevo
@@ -80,7 +92,9 @@ void menu::MenuPrincipal()
                     //cout<<"posicion y: "<<j3.at("casillas").at("dobles")[x].at("y")<<endl<<endl;
                     posY = j3.at("casillas").at("dobles")[x].at("y");
                     Matriz.InsertarElemento(posX,posY,'2');
+                    Ldoble.agregar(posX,posY);
                 }
+                Ldoble.imprimir();
                 cout<<"CASILLAS TRIPLES"<<endl;
                 for(int x = 0; x<j3.at("casillas").at("triples").size(); x++)
                 {
@@ -89,7 +103,9 @@ void menu::MenuPrincipal()
                     //cout<<"posicion y: "<<j3.at("casillas").at("triples")[x].at("y")<<endl<<endl;
                     posY = j3.at("casillas").at("triples")[x].at("y");
                     Matriz.InsertarElemento(posX,posY,'3');
+                    Ltriple.agregarTriple(posX,posY);
                 }
+                Ltriple.imprimir();
                 //cout<<"DICCIONARIO"<<endl;
                 for (int x = 0; x<j3.at("diccionario").size(); x++)
                 {
@@ -156,7 +172,6 @@ void menu::IniciarJuego()
             }
             break;
         case 2:
-            CL.colaAleatoria();
             MenuJugar();
             break;
         case 3:
@@ -262,7 +277,7 @@ void menu::MenuJugar()
                 {
                     segundo = jugador1;
                 }
-                else
+                else if(primero == jugador1)
                 {
                     segundo = jugador2;
                 }
@@ -365,10 +380,29 @@ void menu::Reportes()
             ABB.recorridoPost();
             break;
         case 7:
-            LO.graficarLista();
+            {
+                if(primero == jugador1)
+                {
+                    ListaJ1.graficarLista(primero);
+                }
+                else
+                {
+                    ListaJ1.graficarLista(segundo);
+                }
+
+                if(segundo == jugador1)
+                {
+                    ListaJ2.graficarLista(primero);
+                }
+                else
+                {
+                    ListaJ2.graficarLista(segundo);
+                }
+            }
+            //LO.graficarLista();
             break;
         case 8:
-            LO.graficarLista();
+            //LO.graficarLista();
             break;
         case 9:
             Matriz.Graficar();
@@ -390,7 +424,8 @@ void menu::movimientoJ1()
         cout << "\n| 1. Agregar letra     |";
         cout << "\n| 2. Validar palabra   |";
         cout << "\n| 3. Cambiar fichas    |";
-        cout << "\n| 4. Regresar          |";
+        cout << "\n| 4. Paso              |";
+        cout << "\n| 5. Terminar Juego    |";
         cout << "\n|----------------------|";
         cout << "\n\n Escoja una Opcion: ";
         cin>>J1;
@@ -399,8 +434,8 @@ void menu::movimientoJ1()
         {
         case 1:
             {
-                int x, y;
-                char c;
+                //int x, y;
+                //char c;
                 cout << "coordenada X: " << endl;
                 cin >> x;
                 cout << "coordenada Y: " << endl;
@@ -414,9 +449,11 @@ void menu::movimientoJ1()
                         j1.eliminarNodo(c);
                         palabraJ1 += CL.getString(c);
                         Matriz.InsertarElemento(x,y,c);
+                        jugar1.agregarNodo(x,y,c);
+                        //jugar1.imprimirLista();
                         Matriz.Graficar();
                         j1.graficarLista(primero);
-                        cout << palabraJ1 << endl;
+                        //cout << palabraJ1 << endl;
                     }
                     else
                     {
@@ -430,9 +467,11 @@ void menu::movimientoJ1()
                         j2.eliminarNodo(c);
                         palabraJ2 += CL.getString(c);
                         Matriz.InsertarElemento(x,y,c);
+                        jugar2.agregarNodo(x,y,c);
+                        //jugar2.imprimirLista();
                         Matriz.Graficar();
                         j2.graficarLista(primero);
-                        cout << palabraJ2 << endl;
+                        //cout << palabraJ2 << endl;
                     }
                     else
                     {
@@ -443,42 +482,169 @@ void menu::movimientoJ1()
             break;
         case 2:
             {
+
                 if(primero == jugador1)
-                {
-                    if(LCD.buscarPalabra(palabraJ1) != NULL)
+                {/*
+                    if(jugar1.buscarColumna() != NULL)
                     {
-                        cout << "la palabra si existe \n\n";
+                        ///la palabra se busca en las columnas
+                        palabraJ1 = Matriz.recorrerColumna(jugar1.retornarColumna());*/
+                        if(LCD.buscarPalabra(palabraJ1) != NULL)
+                        {
+                            cout << "la palabra si existe \n\n";
+                            for(int i = 0; i<palabraJ1.size(); i++)
+                            {
+                                puntajej1 = puntajej1 + sumaPuntos(palabraJ1[i]);
+                            }
+                            cout << "Tus puntos son: " << LD.getIntToString(puntajej1) << endl;
+                            palabraJ1 = "";
+                            movimientoJ2();
+                        }
+                        else
+                        {
+                            cout << "La palabra no esta en el Diccionario \n\n";
+                            palabraJ1 = "";
+                            movimientoJ2();
+                        }/*
+                    }
+                    else if(jugar1.buscarFila() != NULL)
+                    {
+                        /// la palabra se busca en las filas
+                        palabraJ1 = Matriz.recorrerFila(jugar1.retornarFila());
+                        if(LCD.buscarPalabra(palabraJ1) != NULL)
+                        {
+                            cout << "la palabra si existe \n\n";
+                            for(int i = 0; i<palabraJ1.size(); i++)
+                            {
+                                puntajej1 = puntajej1 + sumaPuntos(palabraJ1[i]);
+                            }
+                            cout << "Tus puntos son: " << LD.getIntToString(puntajej1) << endl;
+                            movimientoJ2();
+                        }
+                        else
+                        {
+                            cout << "La palabra no esta en el Diccionario \n\n";
+                            movimientoJ2();
+                        }
                     }
                     else
                     {
-                        cout << "La palabra no esta en el Diccionario \n\n";
-                    }
+                        /// LA PALABRA NO EXISTE
+                        cout << "Palabra no valida \n\n";
+                        movimientoJ2();
+                    }*/
+                    ///////////////////////////////////
+
                 }
                 else
-                {
-                    if(LCD.buscarPalabra(palabraJ2) != NULL)
+                {/*
+                    if(jugar2.buscarColumna() != NULL)
                     {
-                        cout << "la palabra si existe \n\n";
+                        ///la palabra se busca en las columnas
+                        palabraJ2 = Matriz.recorrerColumna(jugar2.retornarColumna());*/
+                        if(LCD.buscarPalabra(palabraJ2) != NULL)
+                        {
+                            cout << "la palabra si existe \n\n";
+                            for(int i = 0; i<palabraJ2.size(); i++)
+                            {
+                                puntajej2 = puntajej2 + sumaPuntos(palabraJ2[i]);
+                            }
+                            cout << "Tus puntos son: " << LD.getIntToString(puntajej2) << endl;
+                            palabraJ2 = "";
+                            movimientoJ2();
+                        }
+                        else
+                        {
+                            cout << "La palabra no esta en el Diccionario \n\n";
+                            palabraJ2 = "";
+                            movimientoJ2();
+                        }/*
+                    }
+                    else if(jugar2.buscarFila() != NULL)
+                    {
+                        /// la palabra se busca en las filas
+                        palabraJ2 = Matriz.recorrerFila(jugar2.retornarFila());
+                        if(LCD.buscarPalabra(palabraJ2) != NULL)
+                        {
+                            cout << "la palabra si existe \n\n";
+                            for(int i = 0; i<palabraJ2.size(); i++)
+                            {
+                                puntajej2 = puntajej2 + sumaPuntos(palabraJ2[i]);
+                            }
+                            cout << "Tus puntos son: " << LD.getIntToString(puntajej2) << endl;
+                            movimientoJ2();
+                        }
+                        else
+                        {
+                            cout << "La palabra no esta en el Diccionario \n\n";
+                            movimientoJ2();
+                        }
                     }
                     else
                     {
-                        cout << "La palabra no esta en el Diccionario \n\n";
-                    }
+                        /// LA PALABRA NO EXISTE
+                        cout << "Palabra no valida \n\n";
+                        movimientoJ2();
+                    }*/
+
                 }
             }
             break;
         case 3:
             ///*PENSAR COMO HACER EL CAMBIO DE FICHAS*/
-            {
-
-            }
+                {
+                    i = 1;
+                    j = 1;
+                    while(i <= 7)
+                    {
+                        f = CL.eliminarCola();
+                        //cout <<"prueba de eliminar"<< CL.getString(f);
+                        j1.agregarNodo(f);
+                        i++;
+                    }
+                    j1.graficarLista(jugador1);
+                    while(j <= 7)
+                    {
+                        g = CL.eliminarCola();
+                        j2.agregarNodo(g);
+                        j++;
+                    }
+                    j2.graficarLista(jugador2);
+                }
             break;
         case 4:
-            MenuScrabble();
+            movimientoJ2();
+            break;
+        case 5:
+            {
+                cout << "Desea terminar el Juego -*S* para salir -*n* para continuar \n";
+                OpS = getch();
+                switch(OpS)
+                {
+                case 'S':
+                case 's':
+                    if(primero == jugador1)
+                    {
+                        ListaJ1.agregarPuntaje(puntajej1);
+                    }
+                    else if(primero == jugador2)
+                    {
+                        ListaJ2.agregarPuntaje(puntajej2);
+                    }
+                    contador = 1;
+
+                    MenuJugar();
+
+                    break;
+                case 'n':
+                    movimientoJ1();
+                    break;
+                }
+            }
             break;
         }
     }
-    while(J1 != 4);
+    while(J1 != 5);
 }
 
 ///MOVIMIENTOS DEL JUGADOR 2
@@ -494,7 +660,8 @@ void menu::movimientoJ2()
         cout << "\n| 1. Agregar letra     |";
         cout << "\n| 2. Validar palabra   |";
         cout << "\n| 3. Cambiar fichas    |";
-        cout << "\n| 4. Regresar          |";
+        cout << "\n| 4. Paso1             |";
+        cout << "\n| 5. Terminar Juego    |";
         cout << "\n|----------------------|";
         cout << "\n\n Escoja una Opcion: ";
         cin>>J2;
@@ -518,9 +685,11 @@ void menu::movimientoJ2()
                         j1.eliminarNodo(c);
                         palabraJ1 += CL.getString(c);
                         Matriz.InsertarElemento(x,y,c);
+                        jugar1.agregarNodo(x,y,c);
+                        //jugar1.imprimirLista();
                         Matriz.Graficar();
-                        j1.graficarLista(primero);
-                        cout << " " << palabraJ1 << endl;
+                        j1.graficarLista(segundo);
+                        //cout << " " << palabraJ1 << endl;
                     }
                     else
                     {
@@ -534,9 +703,11 @@ void menu::movimientoJ2()
                         j2.eliminarNodo(c);
                         palabraJ2 += CL.getString(c);
                         Matriz.InsertarElemento(x,y,c);
+                        jugar2.agregarNodo(x,y,c);
+                        //jugar2.imprimirLista();
                         Matriz.Graficar();
-                        j2.graficarLista(primero);
-                        cout << palabraJ2 << endl;
+                        j2.graficarLista(segundo);
+                        //cout << palabraJ2 << endl;
                     }
                     else
                     {
@@ -547,39 +718,221 @@ void menu::movimientoJ2()
             break;
         case 2:
             {
-                if(segundo == jugador1)
-                {
-                    if(LCD.buscarPalabra(palabraJ1) != NULL)
-                    {
-                        cout << "la palabra si existe \n\n";
+
+                    if(segundo == jugador1)
+                    {/*
+                        if(jugar1.buscarColumna() != NULL)
+                        {
+                            ///la palabra se busca en las columnas
+                            palabraJ1 = Matriz.recorrerColumna(jugar1.retornarColumna());*/
+                            if(LCD.buscarPalabra(palabraJ1) != NULL)
+                            {
+                                cout << "la palabra si existe \n\n";
+                                for(int i = 0; i<palabraJ1.size(); i++)
+                                {
+                                    puntajej1 = puntajej1 + sumaPuntos(palabraJ1[i]);
+                                    //cout<<palabraJ1[i] << endl;
+                                    //CREAR VARIABLES GLOBALES PARA LA SUMA DE PUNTAJES, LA SUMA DEL MAIN SI FUNCIONA!!!!
+                                    //HACER EL METODO QUE LLENE LA LISTA DE PUNTAJE DE CADA JUGADOR
+                                    //FALTA HACER LA SUMA DE LAS CASILLAS DOBLES Y TRIPLES
+                                }
+                                cout << "Tus puntos son: " << LD.getIntToString(puntajej1) <<endl;
+                                palabraJ1 = "";
+                                movimientoJ1();
+                            }
+                            else
+                            {
+                                cout << "La palabra no esta en el Diccionario \n\n";
+                                palabraJ1 = "";
+                                //CORREGIR LA ELIMINACION DE LA MATRIZ, PARA DEVOLVER LAS FICHAS INGRESADAS
+                                movimientoJ1();
+                            }/*
+                        }
+                        else if(jugar1.buscarFila() != NULL)
+                        {
+                            /// la palabra se busca en las filas
+                            palabraJ1 = Matriz.recorrerFila(jugar1.retornarColumna());
+                            if(LCD.buscarPalabra(palabraJ1) != NULL)
+                            {
+                                cout << "la palabra si existe \n\n";
+                                for(int i = 0; i<palabraJ1.size(); i++)
+                                {
+                                    puntajej1 = puntajej1 + sumaPuntos(palabraJ1[i]);
+                                    //cout<<palabraJ1[i] << endl;
+                                    //CREAR VARIABLES GLOBALES PARA LA SUMA DE PUNTAJES, LA SUMA DEL MAIN SI FUNCIONA!!!!
+                                    //HACER EL METODO QUE LLENE LA LISTA DE PUNTAJE DE CADA JUGADOR
+                                    //FALTA HACER LA SUMA DE LAS CASILLAS DOBLES Y TRIPLES
+                                }
+                                cout << "Tus puntos son: " << LD.getIntToString(puntajej1) <<endl;
+                                movimientoJ1();
+                            }
+                            else
+                            {
+                                cout << "La palabra no esta en el Diccionario \n\n";
+                                //CORREGIR LA ELIMINACION DE LA MATRIZ, PARA DEVOLVER LAS FICHAS INGRESADAS
+                                movimientoJ1();
+                            }
+                        }
+                        else
+                        {
+                            /// LA PALABRA NO EXISTE
+                            cout << "Palabra no valida \n\n";
+                            movimientoJ1();
+                        }*/
+                        ///////////////////////////////////
+
                     }
                     else
-                    {
-                        cout << "La palabra no esta en el Diccionario \n\n";
+                    {/*
+                        if(jugar2.buscarColumna() != NULL)
+                        {
+                            ///la palabra se busca en las columnas
+                            palabraJ2 = Matriz.recorrerColumna(jugar2.retornarColumna());
+                        }
+                        else if(jugar2.buscarFila() != NULL)
+                        {
+                            /// la palabra se busca en las filas
+                            palabraJ2 = Matriz.recorrerFila(jugar2.retornarFila());
+                        }
+                        else
+                        {
+                            /// LA PALABRA NO EXISTE
+                            cout << "Palabra no valida \n\n";
+                        }*/
+                        ///////////////////////////////////
+                        if(LCD.buscarPalabra(palabraJ2) != NULL)
+                        {
+                            cout << "la palabra si existe \n\n";
+                            for(int i = 0; i<palabraJ2.size(); i++)
+                            {
+                                puntajej2 = puntajej2 + sumaPuntos(palabraJ2[i]);
+                            }
+                            cout << "Tus puntos son: " << LD.getIntToString(puntajej2) << endl;
+                            palabraJ2 = "";
+                            movimientoJ1();
+                        }
+                        else
+                        {
+                            cout << "La palabra no esta en el Diccionario \n\n";
+                            palabraJ2 = "";
+                            movimientoJ1();
+                        }
                     }
-                }
-                else
-                {
-                    if(LCD.buscarPalabra(palabraJ2) != NULL)
-                    {
-                        cout << "la palabra si existe \n\n";
-                    }
-                    else
-                    {
-                        cout << "La palabra no esta en el Diccionario \n\n";
-                    }
-
-                }
-
             }
             break;
         case 3:
+            {
+                i = 1;
+                j = 1;
+                while(i <= 7)
+                {
+                    f = CL.eliminarCola();
+                    //cout <<"prueba de eliminar"<< CL.getString(f);
+                    j1.agregarNodo(f);
+                    i++;
+                }
+                j1.graficarLista(jugador1);
+                while(j <= 7)
+                {
+                    g = CL.eliminarCola();
+                    j2.agregarNodo(g);
+                    j++;
+                }
+                j2.graficarLista(jugador2);
+            }
             break;
         case 4:
-            MenuScrabble();
+            movimientoJ1();
+            break;
+        case 5:
+            {
+                cout << "Desea terminar el Juego -*S* para salir -*n* para continuar \n";
+                ops = getch();
+                switch(ops)
+                {
+                case 'S':
+                case 's':
+                    if(segundo == jugador1)
+                    {
+                        ListaJ2.agregarPuntaje(puntajej1);
+                    }
+                    else
+                    {
+                        ListaJ2.agregarPuntaje(puntajej2);
+                    }
+                    contador = 1;
+
+                    MenuJugar();
+                    break;
+                case 'n':
+                    movimientoJ2();
+                    break;
+                }
+            }
             break;
         }
     }
-    while(J2 != 4);
+    while(J2 != 5);
 }
 
+///METODO PARA SUMAR PUNTOS
+int menu::sumaPuntos(char c)
+{
+    int puntos = 0;
+    {
+        switch(c)
+        {
+        case 'a':
+        case 'e':
+        case 'o':
+        case 'i':
+        case 's':
+        case 'n':
+        case 'l':
+        case 'r':
+        case 'u':
+        case 't':
+            puntos = 1;
+            return puntos;
+            break;
+
+        case 'd':
+        case 'g':
+            puntos = 2;
+            return puntos;
+            break;
+
+        case 'c':
+        case 'b':
+        case 'm':
+        case 'p':
+            puntos = 3;
+            return puntos;
+            break;
+
+        case 'h':
+        case 'f':
+        case 'v':
+        case 'y':
+            puntos = 4;
+            return puntos;
+            break;
+
+        case 'q':
+            puntos = 5;
+            return puntos;
+            break;
+
+        case 'j':
+        case 'x':
+            puntos = 8;
+            return puntos;
+            break;
+
+        case 'z':
+            puntos = 10;
+            return puntos;
+            break;
+        }
+    }
+}

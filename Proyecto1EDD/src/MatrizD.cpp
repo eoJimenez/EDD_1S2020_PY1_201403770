@@ -695,3 +695,55 @@ void MatrizD::modificar(int x, int y, char dato)///HAY QUE ELIMINAR LAS CABECERA
         }
     }
 }
+string MatrizD::recorrerColumna(int posX)
+{
+    NodoM *aux = root->siguiente;
+    string Palabra = "";
+    while(aux != NULL)
+    {
+        if(aux->columna == posX)
+        {
+            break;
+        }
+        aux = aux->siguiente;
+    }
+
+    if(aux->columna == posX)
+    {
+        NodoM *temp = aux->abajo;
+        while(temp != NULL)
+        {
+            Palabra += getString(temp->caracter);
+            temp = temp->abajo;
+            //cout << Palabra;
+            //return Palabra;
+        }
+    }
+    return Palabra;
+}
+string MatrizD::recorrerFila(int posY)
+{
+    NodoM *aux = root->abajo;
+    string palabra = "";
+    while(aux != NULL)
+    {
+        if(aux->fila == posY)
+        {
+            break;
+        }
+        aux = aux->abajo;
+    }
+
+    if(aux->fila == posY)
+    {
+        //cout << IntToString(aux->fila);
+        NodoM *tempo = aux->siguiente;
+        while(tempo != NULL)
+        {
+            palabra += getString(tempo->caracter);
+            //cout << palabra;
+            tempo = tempo->siguiente;
+        }
+    }
+    return palabra;
+}

@@ -12,7 +12,7 @@ class ListaOrdenada
 
         //CONSTRUCTOR
         ListaOrdenada();
-        void graficarLista();
+        void graficarLista(string);
         string DefinirNodo();
         string apuntador();
         string intToString(int valor);

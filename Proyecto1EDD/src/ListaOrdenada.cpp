@@ -59,12 +59,14 @@ void ListaOrdenada::ImprimirPuntaje()
     cout << "\n";
 }
 
-void ListaOrdenada::graficarLista()
+void ListaOrdenada::graficarLista(string nombre)
 {
     string cadNodo;
     string cadApuntador;
+    string compilarDot;
+    string abrirDot;
     ofstream archivoD;
-    archivoD.open("C:/imagenes/ListaOrdenada.dot",ios::out);
+    archivoD.open("C:/imagenes/ListaOrdenada "+nombre+".dot",ios::out);
     archivoD <<"digraph ListaCircularDoble\n{"<<endl;
     archivoD <<"\trankdir=LR;"<<endl;
     archivoD<<"\tgraph [nodesep=0.3];"<<endl;
@@ -80,12 +82,14 @@ void ListaOrdenada::graficarLista()
     archivoD<<"\n";
     archivoD<<cadApuntador<<endl;
     archivoD<<"\n";
-    archivoD<<"\tlabel=\"Lista Ordenada: Puntajes\n\n\";"<<endl;
+    archivoD<<"\tlabel=\"Lista Ordenada: Puntaje de: "+nombre+"\n\n\";"<<endl;
     archivoD<<"\t}"<<endl;
     archivoD<<"}"<<endl;
     archivoD.close();
-    system("dot C:/imagenes/ListaOrdenada.dot -o C:/imagenes/ListaOrdenada.png -Tpng -Gcharset=utf8");
-    system("C:/imagenes/ListaOrdenada.png");
+    compilarDot = "dot C:/imagenes/ListaOrdenada "+nombre+".dot -o C:/imagenes/ListaOrdenada "+nombre+".png -Tpng -Gcharset=utf8";
+    system(compilarDot.c_str());
+    abrirDot = "C:/imagenes/ListaOrdenada "+nombre+".png";
+    system(abrirDot.c_str());
 }
 string ListaOrdenada::DefinirNodo()
 {

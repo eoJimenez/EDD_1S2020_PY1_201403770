@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1585979660 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\main.cpp
+1586134927 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\main.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -11,6 +11,9 @@
 	"MatrizD.h"
 	"menu.h"
 	"Json.h"
+	"SimpleDobles.h"
+	"SimpleTriples.h"
+	"ListaValidacion.h"
 
 1583701265 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listadcircular.cpp
 	"ListaDCircular.h"
@@ -19,7 +22,7 @@
 	<iostream>
 	<string>
 
-1585956370 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listadoble.cpp
+1586126446 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listadoble.cpp
 	"ListaDoble.h"
 	<iostream>
 	<string>
@@ -27,7 +30,7 @@
 	<sstream>
 	<bits/stdc++.h>
 
-1585953161 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listadoble.h
+1586126516 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listadoble.h
 	<string>
 
 1585973619 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listacirculardoble.cpp
@@ -59,10 +62,10 @@
 	"conio.h"
 	<time.h>
 
-1584549373 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listaordenada.h
+1586138895 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listaordenada.h
 	<string>
 
-1584549312 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listaordenada.cpp
+1586139324 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listaordenada.cpp
 	<iostream>
 	"ListaOrdenada.h"
 	<string>
@@ -120,21 +123,21 @@
 
 1585802993 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\json.h
 
-1585852716 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\matrizd.cpp
+1586134904 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\matrizd.cpp
 	"MatrizD.h"
 	<string>
 	<iostream>
 	<fstream>
 	<bits/stdc++.h>
 
-1585848283 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\matrizd.h
+1586129438 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\matrizd.h
 	<string>
 	<iostream>
 
-1585893984 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\menu.h
+1586025702 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\menu.h
 	<string>
 
-1585974713 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\menu.cpp
+1586141727 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\menu.cpp
 	"menu.h"
 	<iostream>
 	<fstream>
@@ -154,6 +157,9 @@
 	<fstream>
 	"json.hpp"
 	<typeinfo>
+	"SimpleDobles.h"
+	"SimpleTriples.h"
+	"ListaValidacion.h"
 
 1583104322 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\json.hpp
 	<algorithm>
@@ -322,4 +328,27 @@
 	<cstring>
 	<limits>
 	<type_traits>
+
+1586049891 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\simpletriples.cpp
+	"SimpleTriples.h"
+
+1586049568 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\simpletriples.h
+	<iostream>
+
+1586049122 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\simpledobles.cpp
+	"SimpleDobles.h"
+	<iostream>
+
+1586048697 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\simpledobles.h
+	<string>
+
+1586135672 source:c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\src\listavalidacion.cpp
+	"ListaValidacion.h"
+	"ListaDoble.h"
+	<iostream>
+	<string>
+
+1586135613 c:\users\xavier tnt\desktop\pejota\edd\practica1edd\proyecto1edd\include\listavalidacion.h
+	<iostream>
+	<string>
 

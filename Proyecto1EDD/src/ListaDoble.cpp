@@ -209,20 +209,29 @@ string ListaDoble::getIntToString(int i)
 ///ELIMINAR TODO DE LA LISTA
 char ListaDoble::eliminarTodo()
 {
-    char c;
     nodoDoble *aux = primero;
-    do
+    char c;
+    if(primero == NULL)
     {
-        c = aux->caracter;
+        cout << "lista vacia" <<endl;
+    }
+    else
+    {
+        while(aux != NULL)
+        {
+            c += aux->caracter;
+            return c;
+            aux = aux->siguiente;
+        }
 
-        primero = aux->siguiente;
-        return c;
-        aux->anterior->siguiente = NULL;
-        aux->anterior = NULL;
+    }
+    //return;
+}
 
-        aux = aux->siguiente;
-
-    }while(aux != NULL);
+void ListaDoble::cambiarApuntadores()
+{
+    primero = NULL;
+    ultimo = NULL;
 }
 //CLASE NODO DOBLE
     //CONSTRUCTOR

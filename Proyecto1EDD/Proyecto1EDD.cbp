@@ -41,7 +41,10 @@
 		<Unit filename="include/ListaDoble.h" />
 		<Unit filename="include/ListaOrdenada.h" />
 		<Unit filename="include/ListaSimple.h" />
+		<Unit filename="include/ListaValidacion.h" />
 		<Unit filename="include/MatrizD.h" />
+		<Unit filename="include/SimpleDobles.h" />
+		<Unit filename="include/SimpleTriples.h" />
 		<Unit filename="include/menu.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/ArbolBB.cpp" />
@@ -51,7 +54,10 @@
 		<Unit filename="src/ListaDoble.cpp" />
 		<Unit filename="src/ListaOrdenada.cpp" />
 		<Unit filename="src/ListaSimple.cpp" />
+		<Unit filename="src/ListaValidacion.cpp" />
 		<Unit filename="src/MatrizD.cpp" />
+		<Unit filename="src/SimpleDobles.cpp" />
+		<Unit filename="src/SimpleTriples.cpp" />
 		<Unit filename="src/menu.cpp" />
 		<Extensions>
 			<code_completion />

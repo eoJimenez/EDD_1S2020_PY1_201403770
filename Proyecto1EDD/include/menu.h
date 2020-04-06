@@ -22,6 +22,8 @@ class menu
         void movimientoJ2();
         void cambioFichasJ1();
         void cambioFichasJ2();
+        ///SUMA DE PUNTOS
+        int sumaPuntos(char);
 
 
     protected:

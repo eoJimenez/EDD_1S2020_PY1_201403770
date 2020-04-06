@@ -23,6 +23,7 @@ public:
     string DefNodos();
     string apuntadores();
     string getIntToString(int c);
+    void cambiarApuntadores();
 
 
     ///DESTRUCTOR
